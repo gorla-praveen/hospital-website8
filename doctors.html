@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Doctors - MediCare Hospital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Raleway:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div class="d-flex gap-4 flex-wrap">
+          <span><i class="bi bi-envelope"></i> info@medicare-hospital.com</span>
+          <span><i class="bi bi-telephone"></i> +1 800 123 4567</span>
+          <span><i class="bi bi-geo-alt"></i> 123 Medical Drive, Health City, HC 10001</span>
+        </div>
+        <div class="social-links">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="bi bi-heart-pulse-fill me-2"></i>Medi<span>Care</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="doctors.html">Doctors</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link btn-appointment" href="appointment.html">Book Appointment</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h1><i class="bi bi-people me-3"></i>Our Medical Team</h1>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item active">Doctors</li>
+            </ol>
+          </nav>
+        </div>
+        <div class="col-md-6 text-md-end mt-3 mt-md-0">
+          <div class="d-flex gap-3 justify-content-md-end flex-wrap">
+            <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 20px;text-align:center;">
+              <div style="font-size:22px;font-weight:800;color:#fff;font-family:'Raleway',sans-serif;">50+</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.7);">Specialists</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 20px;text-align:center;">
+              <div style="font-size:22px;font-weight:800;color:#fff;font-family:'Raleway',sans-serif;">15+</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.7);">Departments</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH & FILTER -->
+  <section style="padding:40px 0 20px;">
+    <div class="container">
+      <div class="row g-3 align-items-center mb-4">
+        <div class="col-md-6">
+          <div style="position:relative;">
+            <i class="bi bi-search" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#6c757d;"></i>
+            <input type="text" class="form-control" id="doctorSearch" placeholder="Search doctor by name or specialty..." style="padding-left:40px;border-radius:50px;" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="filter-btns mb-0">
+            <button class="filter-btn active" data-filter="all">All Departments</button>
+            <button class="filter-btn" data-filter="cardiology">Cardiology</button>
+            <button class="filter-btn" data-filter="neurology">Neurology</button>
+            <button class="filter-btn" data-filter="orthopedics">Orthopedics</button>
+            <button class="filter-btn" data-filter="pediatrics">Pediatrics</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD VIEW DOCTORS -->
+      <div class="row g-4" id="doctorGrid">
+
+        <div class="col-md-6 col-lg-4 fade-up" data-department="cardiology">
+          <div class="doctor-card">
+            <div class="doctor-img-wrap">
+              <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=280&fit=crop&q=80" alt="Dr. James Wilson" />
+              <div class="doctor-social">
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <a href="appointment.html"><i class="bi bi-calendar-check"></i></a>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h4>Dr. James Wilson</h4>
+              <span class="specialty">Cardiologist</span>
+              <div class="doctor-rating mb-2">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                <span>(4.8) • 320 Reviews</span>
+              </div>
+              <div class="d-flex gap-1 flex-wrap mb-3">
+                <span class="badge-custom">MBBS</span>
+                <span class="badge-custom">MD Cardiology</span>
+                <span class="availability-badge">Available Today</span>
+              </div>
+              <a href="appointment.html" class="btn-submit" style="font-size:13px;padding:9px;">Book Appointment</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 fade-up" data-department="neurology">
+          <div class="doctor-card">
+            <div class="doctor-img-wrap">
+              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=280&fit=crop&q=80" alt="Dr. Sarah Chen" />
+              <div class="doctor-social">
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <a href="appointment.html"><i class="bi bi-calendar-check"></i></a>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h4>Dr. Sarah Chen</h4>
+              <span class="specialty">Neurologist</span>
+              <div class="doctor-rating mb-2">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <span>(5.0) • 485 Reviews</span>
+              </div>
+              <div class="d-flex gap-1 flex-wrap mb-3">
+                <span class="badge-custom">MBBS</span>
+                <span class="badge-custom">DM Neurology</span>
+                <span class="availability-badge">Available Today</span>
+              </div>
+              <a href="appointment.html" class="btn-submit" style="font-size:13px;padding:9px;">Book Appointment</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 fade-up" data-department="orthopedics">
+          <div class="doctor-card">
+            <div class="doctor-img-wrap">
+              <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&h=280&fit=crop&q=80" alt="Dr. Michael Torres" />
+              <div class="doctor-social">
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <a href="appointment.html"><i class="bi bi-calendar-check"></i></a>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h4>Dr. Michael Torres</h4>
+              <span class="specialty">Orthopedic Surgeon</span>
+              <div class="doctor-rating mb-2">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                <span>(4.6) • 210 Reviews</span>
+              </div>
+              <div class="d-flex gap-1 flex-wrap mb-3">
+                <span class="badge-custom">MBBS</span>
+                <span class="badge-custom">MS Ortho</span>
+                <span style="background:rgba(255,193,7,0.12);color:#856404;font-size:12px;padding:4px 12px;border-radius:50px;font-weight:600;">Next: Mon</span>
+              </div>
+              <a href="appointment.html" class="btn-submit" style="font-size:13px;padding:9px;">Book Appointment</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 fade-up" data-department="pediatrics">
+          <div class="doctor-card">
+            <div class="doctor-img-wrap">
+              <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=280&fit=crop&q=80" alt="Dr. Priya Sharma" />
+              <div class="doctor-social">
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <a href="appointment.html"><i class="bi bi-calendar-check"></i></a>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h4>Dr. Priya Sharma</h4>
+              <span class="specialty">Pediatrician</span>
+              <div class="doctor-rating mb-2">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                <span>(4.9) • 612 Reviews</span>
+              </div>
+              <div class="d-flex gap-1 flex-wrap mb-3">
+                <span class="badge-custom">MBBS</span>
+                <span class="badge-custom">MD Pediatrics</span>
+                <span class="availability-badge">Available Today</span>
+              </div>
+              <a href="appointment.html" class="btn-submit" style="font-size:13px;padding:9px;">Book Appointment</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 fade-up" data-department="neurology">
+          <div class="doctor-card">
+            <div class="doctor-img-wrap">
+              <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=280&fit=crop&q=80" alt="Dr. Robert Kim" />
+              <div class="doctor-social">
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <a href="appointment.html"><i class="bi bi-calendar-check"></i></a>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h4>Dr. Robert Kim</h4>
+              <span class="specialty">Neurosurgeon</span>
+              <div class="doctor-rating mb-2">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                <span>(4.7) • 190 Reviews</span>
+              </div>
+              <div class="d-flex gap-1 flex-wrap mb-3">
+                <span class="badge-custom">MBBS</span>
+                <span class="badge-custom">MCh Neuro</span>
+                <span class="availability-badge">Available Today</span>
+              </div>
+              <a href="appointment.html" class="btn-submit" style="font-size:13px;padding:9px;">Book Appointment</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 fade-up" data-department="cardiology">
+          <div class="doctor-card">
+            <div class="doctor-img-wrap">
+              <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=280&fit=crop&q=80" alt="Dr. Aisha Patel" />
+              <div class="doctor-social">
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <a href="appointment.html"><i class="bi bi-calendar-check"></i></a>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h4>Dr. Aisha Patel</h4>
+              <span class="specialty">Interventional Cardiologist</span>
+              <div class="doctor-rating mb-2">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                <span>(4.5) • 280 Reviews</span>
+              </div>
+              <div class="d-flex gap-1 flex-wrap mb-3">
+                <span class="badge-custom">MBBS</span>
+                <span class="badge-custom">DM Cardiology</span>
+                <span style="background:rgba(255,193,7,0.12);color:#856404;font-size:12px;padding:4px 12px;border-radius:50px;font-weight:600;">Next: Tue</span>
+              </div>
+              <a href="appointment.html" class="btn-submit" style="font-size:13px;padding:9px;">Book Appointment</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end row -->
+
+      <!-- No results -->
+      <div id="noResults" style="display:none;" class="text-center py-5">
+        <i class="bi bi-search fs-1 text-muted"></i>
+        <p class="text-muted mt-3">No doctors found. Try a different search.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EMERGENCY SECTION -->
+  <section class="emergency-section">
+    <div class="container text-center">
+      <h2 class="mb-3"><i class="bi bi-lightning-fill me-2"></i>Need Emergency Care?</h2>
+      <p class="mb-4">Our emergency department is available 24/7 with experienced specialists ready to help.</p>
+      <a href="tel:911" class="btn-emergency me-3"><i class="bi bi-telephone-fill"></i> Call 911</a>
+      <a href="appointment.html" class="btn-emergency" style="background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.4);">
+        <i class="bi bi-calendar-plus"></i> Urgent Appointment
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4 col-md-6">
+          <h4 style="font-size:24px;border:none;padding:0;margin-bottom:15px;">
+            <i class="bi bi-heart-pulse-fill text-primary me-2"></i>Medi<span style="color:#fff;">Care</span>
+          </h4>
+          <p>Committed to providing exceptional healthcare services with compassion and innovation.</p>
+          <div class="footer-social mt-3">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-twitter-x"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html"><i class="bi bi-chevron-right"></i> Home</a></li>
+            <li><a href="doctors.html"><i class="bi bi-chevron-right"></i> Our Doctors</a></li>
+            <li><a href="index.html#services"><i class="bi bi-chevron-right"></i> Services</a></li>
+            <li><a href="appointment.html"><i class="bi bi-chevron-right"></i> Appointments</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h4>Departments</h4>
+          <ul>
+            <li><a href="#"><i class="bi bi-chevron-right"></i> Cardiology</a></li>
+            <li><a href="#"><i class="bi bi-chevron-right"></i> Neurology</a></li>
+            <li><a href="#"><i class="bi bi-chevron-right"></i> Orthopedics</a></li>
+            <li><a href="#"><i class="bi bi-chevron-right"></i> Pediatrics</a></li>
+            <li><a href="#"><i class="bi bi-chevron-right"></i> Emergency</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <i class="bi bi-geo-alt-fill"></i>
+            <span>123 Medical Drive, Health City, HC 10001</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="bi bi-telephone-fill"></i>
+            <span>+1 800 123 4567 | Emergency: 911</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="bi bi-clock-fill"></i>
+            <span>Mon-Fri: 8am - 8pm | Emergency: 24/7</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="mb-0">&copy; 2025 <a href="#">MediCare Hospital</a>. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Search filter
+    const searchInput = document.getElementById('doctorSearch');
+    searchInput.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      const cards = document.querySelectorAll('#doctorGrid [data-department]');
+      let visible = 0;
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(q)) { card.style.display = ''; visible++; }
+        else { card.style.display = 'none'; }
+      });
+      document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+    });
+  </script>
+</body>
+</html>
