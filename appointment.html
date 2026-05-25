@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Appointment - MediCare Hospital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Raleway:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div class="d-flex gap-4 flex-wrap">
+          <span><i class="bi bi-envelope"></i> info@medicare-hospital.com</span>
+          <span><i class="bi bi-telephone"></i> +1 800 123 4567</span>
+          <span><i class="bi bi-geo-alt"></i> 123 Medical Drive, Health City, HC 10001</span>
+        </div>
+        <div class="social-links">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="bi bi-heart-pulse-fill me-2"></i>Medi<span>Care</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="doctors.html">Doctors</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link btn-appointment active" href="appointment.html">Book Appointment</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <h1><i class="bi bi-calendar2-check me-3"></i>Book an Appointment</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Appointment</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- APPOINTMENT SECTION -->
+  <section class="appointment-section">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- FORM -->
+        <div class="col-lg-8">
+          <div class="appt-form-wrap">
+            <div class="section-title text-start mb-4" style="padding-bottom:20px;">
+              <span class="subtitle" style="color:var(--primary);font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;">Schedule Visit</span>
+              <h2 style="font-size:28px;text-align:left;">Fill in Your Details</h2>
+              <p style="text-align:left;max-width:100%;font-size:14px;">Please fill in the form below to book your appointment. All fields marked with * are required.</p>
+            </div>
+
+            <!-- Success Message -->
+            <div id="formSuccess" class="alert alert-success d-flex align-items-center gap-2" style="display:none!important;border-radius:10px;">
+              <i class="bi bi-check-circle-fill fs-5"></i>
+              <div>
+                <strong>Appointment Booked Successfully!</strong> We will confirm your appointment via email and phone within 2 hours.
+              </div>
+            </div>
+
+            <form id="appointmentForm" novalidate>
+              <!-- Personal Info -->
+              <div style="background:var(--light-bg);border-radius:10px;padding:20px;margin-bottom:20px;">
+                <h5 class="mb-3" style="font-size:15px;font-weight:700;"><i class="bi bi-person-circle text-primary me-2"></i>Personal Information</h5>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">First Name *</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name" required />
+                    <div class="invalid-feedback">Please enter your first name.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Last Name *</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name" required />
+                    <div class="invalid-feedback">Please enter your last name.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Email Address *</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required />
+                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Phone Number *</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="+1 (000) 000-0000" required />
+                    <div class="invalid-feedback">Please enter your phone number.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Date of Birth</label>
+                    <input type="date" class="form-control" id="dob" name="dob" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Gender</label>
+                    <select class="form-select" id="gender" name="gender">
+                      <option value="">Select Gender</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>Other</option>
+                      <option>Prefer not to say</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Appointment Details -->
+              <div style="background:var(--light-bg);border-radius:10px;padding:20px;margin-bottom:20px;">
+                <h5 class="mb-3" style="font-size:15px;font-weight:700;"><i class="bi bi-calendar3 text-primary me-2"></i>Appointment Details</h5>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Department *</label>
+                    <select class="form-select" id="department" name="department" required>
+                      <option value="">Select Department</option>
+                      <option>Cardiology</option>
+                      <option>Neurology</option>
+                      <option>Orthopedics</option>
+                      <option>Pediatrics</option>
+                      <option>Ophthalmology</option>
+                      <option>Pulmonology</option>
+                      <option>Dermatology</option>
+                      <option>Gynecology</option>
+                      <option>General Medicine</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a department.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Preferred Doctor *</label>
+                    <select class="form-select" id="doctor" name="doctor" required>
+                      <option value="">Select Doctor</option>
+                      <option>Dr. James Wilson – Cardiologist</option>
+                      <option>Dr. Sarah Chen – Neurologist</option>
+                      <option>Dr. Michael Torres – Orthopedic</option>
+                      <option>Dr. Priya Sharma – Pediatrician</option>
+                      <option>Dr. Robert Kim – Neurosurgeon</option>
+                      <option>Dr. Aisha Patel – Cardiologist</option>
+                      <option>Any Available Doctor</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a doctor.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Appointment Date *</label>
+                    <input type="date" class="form-control" id="appointmentDate" name="appointmentDate" required />
+                    <div class="invalid-feedback">Please select a date.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Preferred Time *</label>
+                    <select class="form-select" id="appointmentTime" name="appointmentTime" required>
+                      <option value="">Select Time Slot</option>
+                      <optgroup label="Morning">
+                        <option>08:00 AM</option>
+                        <option>08:30 AM</option>
+                        <option>09:00 AM</option>
+                        <option>09:30 AM</option>
+                        <option>10:00 AM</option>
+                        <option>10:30 AM</option>
+                        <option>11:00 AM</option>
+                        <option>11:30 AM</option>
+                      </optgroup>
+                      <optgroup label="Afternoon">
+                        <option>12:00 PM</option>
+                        <option>01:00 PM</option>
+                        <option>02:00 PM</option>
+                        <option>03:00 PM</option>
+                        <option>04:00 PM</option>
+                      </optgroup>
+                      <optgroup label="Evening">
+                        <option>05:00 PM</option>
+                        <option>06:00 PM</option>
+                        <option>07:00 PM</option>
+                      </optgroup>
+                    </select>
+                    <div class="invalid-feedback">Please select a time slot.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Visit Type</label>
+                    <select class="form-select" id="visitType" name="visitType">
+                      <option>First Visit / New Patient</option>
+                      <option>Follow-up Visit</option>
+                      <option>Routine Check-up</option>
+                      <option>Emergency Consultation</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Insurance Provider</label>
+                    <input type="text" class="form-control" placeholder="e.g. Blue Cross, Aetna" id="insurance" name="insurance" />
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Symptoms / Reason for Visit *</label>
+                    <textarea class="form-control" id="symptoms" name="symptoms" rows="4" placeholder="Briefly describe your symptoms or reason for the appointment..." required style="resize:vertical;"></textarea>
+                    <div class="invalid-feedback">Please describe your symptoms or reason.</div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="agreeTerms" required />
+                      <label class="form-check-label" for="agreeTerms" style="font-size:13px;">
+                        I agree to the <a href="#" class="text-primary">Terms & Conditions</a> and <a href="#" class="text-primary">Privacy Policy</a> *
+                      </label>
+                      <div class="invalid-feedback">You must agree before submitting.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-submit">
+                <i class="bi bi-calendar-check me-2"></i>Confirm Appointment
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="col-lg-4">
+          <!-- Appointment Info -->
+          <div class="appt-info-wrap mb-4">
+            <h3><i class="bi bi-info-circle me-2"></i>Booking Information</h3>
+            <div class="appt-info-item">
+              <div class="icon"><i class="bi bi-clock"></i></div>
+              <div>
+                <h5>Working Hours</h5>
+                <p>Mon – Fri: 8:00 AM – 8:00 PM<br>Saturday: 9:00 AM – 5:00 PM<br>Sunday: Emergency Only</p>
+              </div>
+            </div>
+            <div class="appt-info-item">
+              <div class="icon"><i class="bi bi-telephone"></i></div>
+              <div>
+                <h5>Call for Appointment</h5>
+                <p>General: +1 800 123 4567<br>Appointments: +1 800 987 6543</p>
+              </div>
+            </div>
+            <div class="appt-info-item">
+              <div class="icon"><i class="bi bi-envelope"></i></div>
+              <div>
+                <h5>Email Us</h5>
+                <p>appointments@medicare-hospital.com</p>
+              </div>
+            </div>
+            <div class="appt-info-item">
+              <div class="icon"><i class="bi bi-geo-alt"></i></div>
+              <div>
+                <h5>Our Location</h5>
+                <p>123 Medical Drive, Health City,<br>HC 10001, United States</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Emergency -->
+          <div style="background:#dc3545;border-radius:14px;padding:25px;color:#fff;text-align:center;margin-bottom:20px;">
+            <i class="bi bi-lightning-fill fs-1 mb-2 d-block"></i>
+            <h4 style="color:#fff;font-size:18px;margin-bottom:8px;">Medical Emergency?</h4>
+            <p style="font-size:13px;color:rgba(255,255,255,0.85);margin-bottom:15px;">For life-threatening emergencies, call 911 immediately or visit our ER.</p>
+            <a href="tel:911" style="background:#fff;color:#dc3545;border-radius:50px;padding:10px 28px;font-weight:700;font-size:14px;display:inline-block;">
+              <i class="bi bi-telephone-fill me-2"></i>Call 911
+            </a>
+          </div>
+
+          <!-- How it Works -->
+          <div style="background:var(--white);border-radius:14px;padding:25px;box-shadow:var(--shadow);">
+            <h5 style="font-size:16px;font-weight:700;margin-bottom:20px;"><i class="bi bi-list-check text-primary me-2"></i>How It Works</h5>
+            <div class="step-item active">
+              <div class="step-num">1</div>
+              <div class="step-text">
+                <h6>Fill the Form</h6>
+                <span>Enter your personal & appointment details</span>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-text">
+                <h6>Confirmation</h6>
+                <span>We'll confirm via email within 2 hours</span>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-text">
+                <h6>Visit Us</h6>
+                <span>Arrive 10 mins early with your ID/insurance</span>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num" style="background:var(--success);">✓</div>
+              <div class="step-text">
+                <h6>Get Treated</h6>
+                <span>Receive expert medical care from our team</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4 col-md-6">
+          <h4 style="font-size:24px;border:none;padding:0;margin-bottom:15px;">
+            <i class="bi bi-heart-pulse-fill text-primary me-2"></i>Medi<span style="color:#fff;">Care</span>
+          </h4>
+          <p>Committed to providing exceptional healthcare services with compassion and innovation.</p>
+          <div class="footer-social mt-3">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-twitter-x"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html"><i class="bi bi-chevron-right"></i> Home</a></li>
+            <li><a href="doctors.html"><i class="bi bi-chevron-right"></i> Our Doctors</a></li>
+            <li><a href="index.html#services"><i class="bi bi-chevron-right"></i> Services</a></li>
+            <li><a href="appointment.html"><i class="bi bi-chevron-right"></i> Appointments</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#"><i class="bi bi-chevron-right"></i> Cardiology</a></li>
+            <li><a href="#"><i class="bi bi-chevron-right"></i> Neurology</a></li>
+            <li><a href="#"><i class="bi bi-chevron-right"></i> Orthopedics</a></li>
+            <li><a href="#"><i class="bi bi-chevron-right"></i> Pediatrics</a></li>
+            <li><a href="#"><i class="bi bi-chevron-right"></i> Emergency Care</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <i class="bi bi-geo-alt-fill"></i>
+            <span>123 Medical Drive, Health City, HC 10001</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="bi bi-telephone-fill"></i>
+            <span>+1 800 123 4567 | Emergency: 911</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="bi bi-clock-fill"></i>
+            <span>Mon-Fri: 8am - 8pm | Emergency: 24/7</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="mb-0">&copy; 2025 <a href="#">MediCare Hospital</a>. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Show success message properly
+    document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+      const successDiv = document.getElementById('formSuccess');
+      // Check if form is valid (handled in main.js)
+      // Additional: scroll to success
+      setTimeout(() => {
+        if (successDiv.style.display !== 'none') {
+          successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 100);
+    });
+  </script>
+</body>
+</html>
