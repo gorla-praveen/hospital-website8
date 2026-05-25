@@ -66,52 +66,182 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // ---- APPOINTMENT FORM VALIDATION ----
-  const apptForm = document.getElementById('appointmentForm');
-  if (apptForm) {
-    apptForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      let valid = true;
-      const fields = apptForm.querySelectorAll('[required]');
-      fields.forEach(field => {
-        field.classList.remove('is-invalid', 'is-valid');
-        if (!field.value.trim()) {
-          field.classList.add('is-invalid');
-          valid = false;
+ 
+ // ---- APPOINTMENT FORM VALIDATION ----
+const apptForm = document.getElementById('appointmentForm');
+
+if (apptForm) {
+
+  const successMsg = document.getElementById('formSuccess');
+
+  // Validation patterns
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phonePattern = /^[0-9+\-\s()]{10,15}$/;
+
+  // Show error
+  function setInvalid(field, message = '') {
+    field.classList.remove('is-valid');
+    field.classList.add('is-invalid');
+
+    const feedback = field.parentElement.querySelector('.invalid-feedback');
+    if (feedback && message) {
+      feedback.textContent = message;
+    }
+  }
+
+  // Show success
+  function setValid(field) {
+    field.classList.remove('is-invalid');
+    field.classList.add('is-valid');
+  }
+
+  // Validate single field
+  function validateField(field) {
+
+    const value = field.value.trim();
+
+    // Required fields
+    if (field.hasAttribute('required')) {
+
+      // Checkbox validation
+      if (field.type === 'checkbox') {
+        if (!field.checked) {
+          setInvalid(field, 'You must agree before submitting.');
+          return false;
         } else {
-          // Email validation
-          if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
-            field.classList.add('is-invalid');
-            valid = false;
-          } else {
-            field.classList.add('is-valid');
-          }
-        }
-      });
-      if (valid) {
-        const successMsg = document.getElementById('formSuccess');
-        if (successMsg) {
-          successMsg.style.display = 'block';
-          apptForm.reset();
-          apptForm.querySelectorAll('.is-valid').forEach(f => f.classList.remove('is-valid'));
-          setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
+          setValid(field);
+          return true;
         }
       }
-    });
-    // Live validation
-    apptForm.querySelectorAll('[required]').forEach(field => {
-      field.addEventListener('blur', function () {
-        this.classList.remove('is-invalid', 'is-valid');
-        if (!this.value.trim()) {
-          this.classList.add('is-invalid');
-        } else if (this.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)) {
-          this.classList.add('is-invalid');
-        } else {
-          this.classList.add('is-valid');
-        }
-      });
-    });
+
+      // Empty validation
+      if (value === '') {
+        setInvalid(field, 'This field is required.');
+        return false;
+      }
+    }
+
+    // Email validation
+    if (field.type === 'email') {
+      if (!emailPattern.test(value)) {
+        setInvalid(field, 'Please enter a valid email address.');
+        return false;
+      }
+    }
+
+    // Phone validation
+    if (field.id === 'phone') {
+      if (!phonePattern.test(value)) {
+        setInvalid(field, 'Please enter a valid phone number.');
+        return false;
+      }
+    }
+
+    // Symptoms minimum length
+    if (field.id === 'symptoms') {
+      if (value.length < 10) {
+        setInvalid(field, 'Please enter at least 10 characters.');
+        return false;
+      }
+    }
+
+    // Appointment date validation
+    if (field.id === 'appointmentDate') {
+      const selectedDate = new Date(value);
+      const today = new Date();
+
+      today.setHours(0, 0, 0, 0);
+
+      if (selectedDate < today) {
+        setInvalid(field, 'Please select a future date.');
+        return false;
+      }
+    }
+
+    // DOB validation
+    if (field.id === 'dob' && value !== '') {
+      const dobDate = new Date(value);
+      const today = new Date();
+
+      if (dobDate > today) {
+        setInvalid(field, 'Date of birth cannot be in the future.');
+        return false;
+      }
+    }
+
+    setValid(field);
+    return true;
   }
+
+  // Form submit
+  apptForm.addEventListener('submit', function (e) {
+
+    e.preventDefault();
+
+    let isFormValid = true;
+
+    const fields = apptForm.querySelectorAll('input, select, textarea');
+
+    fields.forEach(field => {
+
+      const valid = validateField(field);
+
+      if (!valid) {
+        isFormValid = false;
+      }
+    });
+
+    // Success
+    if (isFormValid) {
+
+      successMsg.style.display = 'flex';
+
+      apptForm.reset();
+
+      // Remove validation classes after reset
+      apptForm.querySelectorAll('.is-valid').forEach(field => {
+        field.classList.remove('is-valid');
+      });
+
+      // Scroll to success message
+      successMsg.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+
+      // Hide success message
+      setTimeout(() => {
+        successMsg.style.display = 'none';
+      }, 5000);
+
+    } else {
+
+      // Scroll to first invalid field
+      const firstInvalid = apptForm.querySelector('.is-invalid');
+
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }
+    }
+  });
+
+  // Live validation
+  apptForm.querySelectorAll('input, select, textarea').forEach(field => {
+
+    field.addEventListener('input', () => {
+      validateField(field);
+    });
+
+    field.addEventListener('blur', () => {
+      validateField(field);
+    });
+
+  });
+}
+   
 
   // ---- NAVBAR ACTIVE LINK ----
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
